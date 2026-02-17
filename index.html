@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financial Accountability Coaching | Take Control of Your Money</title>
+    <title>Accountability Avenue | Professional Financial Accountability Coaching</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600;800&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=Crimson+Pro:wght@600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #0A3D3D;
-            --accent: #F4A259;
-            --secondary: #1A5F5F;
-            --light: #F5F3EE;
-            --text: #2C2C2C;
-            --text-light: #6B6B6B;
+            --primary: #1B4B5A;
+            --accent: #E8964C;
+            --secondary: #2C6B7C;
+            --light: #FAF8F5;
+            --text: #2A2A2A;
+            --text-light: #6A6A6A;
+            --border: #E5E0D8;
         }
 
         * {
@@ -24,10 +25,55 @@
         }
 
         body {
-            font-family: 'Epilogue', sans-serif;
+            font-family: 'Sora', sans-serif;
             color: var(--text);
             background: var(--light);
             overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-cta {
+            padding: 0.8rem 1.8rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(232, 150, 76, 0.3);
         }
 
         /* Hero Section */
@@ -38,23 +84,54 @@
             overflow: hidden;
             display: flex;
             align-items: center;
-            padding: 2rem;
+            padding: 8rem 2rem 4rem;
         }
 
-        .hero::before {
+        .hero::after {
             content: '';
             position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 80%;
-            height: 150%;
-            background: radial-gradient(circle, rgba(244, 162, 89, 0.15) 0%, transparent 70%);
-            animation: float 20s ease-in-out infinite;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: var(--light);
+            clip-path: polygon(0 50%, 100% 0, 100% 100%, 0 100%);
         }
 
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(-30px, 30px) rotate(5deg); }
+        .geometric-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+        }
+
+        .geometric-bg::before,
+        .geometric-bg::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background: white;
+        }
+
+        .geometric-bg::before {
+            width: 600px;
+            height: 600px;
+            top: -200px;
+            right: -100px;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        .geometric-bg::after {
+            width: 400px;
+            height: 400px;
+            bottom: -100px;
+            left: -50px;
+            animation: pulse 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1) translate(0, 0); }
+            50% { transform: scale(1.1) translate(20px, -20px); }
         }
 
         .hero-content {
@@ -77,88 +154,111 @@
         }
 
         .hero h1 {
-            font-family: 'DM Serif Display', serif;
-            font-size: clamp(2.5rem, 7vw, 5rem);
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(2.5rem, 7vw, 5.5rem);
             color: white;
             line-height: 1.1;
             margin-bottom: 1.5rem;
-            animation: fadeInUp 1s ease-out 0.2s both;
+            font-weight: 600;
         }
 
-        .hero h1 span {
+        .hero h1 .highlight {
             color: var(--accent);
             display: block;
         }
 
-        .hero p {
-            font-size: clamp(1.1rem, 2vw, 1.4rem);
+        .hero .subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
             color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 2.5rem;
-            max-width: 600px;
-            line-height: 1.6;
-            animation: fadeInUp 1s ease-out 0.4s both;
+            margin-bottom: 3rem;
+            max-width: 650px;
+            line-height: 1.7;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
         }
 
         .cta-button {
             display: inline-block;
-            padding: 1.2rem 2.5rem;
+            padding: 1.3rem 2.8rem;
             background: var(--accent);
-            color: var(--primary);
+            color: white;
             text-decoration: none;
-            font-weight: 800;
+            font-weight: 600;
             font-size: 1.1rem;
             border-radius: 50px;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(244, 162, 89, 0.3);
-            animation: fadeInUp 1s ease-out 0.6s both;
+            box-shadow: 0 10px 30px rgba(232, 150, 76, 0.3);
         }
 
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(244, 162, 89, 0.4);
+            box-shadow: 0 15px 40px rgba(232, 150, 76, 0.4);
         }
 
-        /* Stats Section */
-        .stats {
+        .cta-secondary {
+            display: inline-block;
+            padding: 1.3rem 2.8rem;
+            background: transparent;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .cta-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: white;
+        }
+
+        /* Trust Bar */
+        .trust-bar {
             background: white;
-            padding: 4rem 2rem;
-            text-align: center;
+            padding: 3rem 2rem;
+            border-bottom: 1px solid var(--border);
         }
 
-        .stats-grid {
-            max-width: 1000px;
+        .trust-content {
+            max-width: 1200px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 3rem;
+            text-align: center;
         }
 
-        .stat {
+        .trust-stat {
             opacity: 0;
             animation: fadeIn 0.8s ease-out forwards;
         }
 
-        .stat:nth-child(1) { animation-delay: 0.2s; }
-        .stat:nth-child(2) { animation-delay: 0.4s; }
-        .stat:nth-child(3) { animation-delay: 0.6s; }
+        .trust-stat:nth-child(1) { animation-delay: 0.1s; }
+        .trust-stat:nth-child(2) { animation-delay: 0.3s; }
+        .trust-stat:nth-child(3) { animation-delay: 0.5s; }
+        .trust-stat:nth-child(4) { animation-delay: 0.7s; }
 
         @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
+            to { opacity: 1; }
         }
 
-        .stat-number {
-            font-family: 'DM Serif Display', serif;
-            font-size: 3rem;
+        .trust-number {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.8rem;
             color: var(--accent);
+            font-weight: 600;
             display: block;
             margin-bottom: 0.5rem;
         }
 
-        .stat-label {
+        .trust-label {
             color: var(--text-light);
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
 
         /* How It Works */
@@ -167,72 +267,172 @@
             background: var(--light);
         }
 
-        .section-title {
-            font-family: 'DM Serif Display', serif;
-            font-size: clamp(2rem, 5vw, 3.5rem);
+        .section-header {
             text-align: center;
-            color: var(--primary);
-            margin-bottom: 4rem;
+            max-width: 700px;
+            margin: 0 auto 5rem;
         }
 
-        .steps {
+        .section-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+
+        .process-grid {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 3rem;
+            gap: 2.5rem;
         }
 
-        .step {
+        .process-card {
             background: white;
             padding: 2.5rem;
             border-radius: 20px;
+            border: 1px solid var(--border);
             position: relative;
-            transition: transform 0.3s ease;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
         }
 
-        .step:hover {
-            transform: translateY(-10px);
+        .process-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            border-color: var(--accent);
         }
 
-        .step-number {
+        .process-number {
             position: absolute;
-            top: -20px;
+            top: -18px;
             left: 2.5rem;
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             background: var(--accent);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 800;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: white;
+            box-shadow: 0 4px 12px rgba(232, 150, 76, 0.3);
         }
 
-        .step h3 {
-            font-size: 1.5rem;
+        .process-card h3 {
+            font-size: 1.4rem;
             color: var(--primary);
             margin-bottom: 1rem;
             margin-top: 1rem;
+            font-weight: 600;
         }
 
-        .step p {
+        .process-card p {
             color: var(--text-light);
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
-        /* Benefits */
-        .benefits {
+        /* Services Section */
+        .services {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            padding: 2.5rem;
+            background: var(--light);
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent), #f0b86e);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Why Choose Us */
+        .why-choose {
             padding: 6rem 2rem;
             background: var(--primary);
             color: white;
+            position: relative;
+            overflow: hidden;
         }
 
-        .benefits .section-title {
+        .why-choose::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: white;
+            clip-path: polygon(0 0, 100% 0, 100% 50%, 0 100%);
+        }
+
+        .why-choose .section-title {
             color: white;
+            margin-top: 3rem;
         }
 
         .benefits-grid {
@@ -243,185 +443,465 @@
             gap: 2rem;
         }
 
-        .benefit {
+        .benefit-card {
             padding: 2rem;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
             transition: all 0.3s ease;
         }
 
-        .benefit:hover {
+        .benefit-card:hover {
             background: rgba(255, 255, 255, 0.1);
             border-color: var(--accent);
+            transform: translateY(-5px);
         }
 
         .benefit-icon {
             font-size: 2.5rem;
             margin-bottom: 1rem;
+            display: block;
         }
 
-        .benefit h3 {
+        .benefit-card h3 {
             font-size: 1.4rem;
             margin-bottom: 1rem;
             color: var(--accent);
+            font-weight: 600;
         }
 
-        .benefit p {
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.6;
+        .benefit-card p {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.7;
         }
 
-        /* CTA Section */
+        /* Testimonials */
+        .testimonials {
+            padding: 6rem 2rem;
+            background: var(--light);
+        }
+
+        .testimonial-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            position: relative;
+        }
+
+        .quote-mark {
+            font-size: 4rem;
+            color: var(--accent);
+            opacity: 0.2;
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-text {
+            font-size: 1.05rem;
+            color: var(--text);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .author-info {
+            flex: 1;
+        }
+
+        .author-name {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .author-title {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Final CTA */
         .final-cta {
             padding: 6rem 2rem;
             text-align: center;
             background: white;
         }
 
-        .final-cta h2 {
-            font-family: 'DM Serif Display', serif;
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            color: var(--primary);
-            margin-bottom: 1.5rem;
+        .cta-box {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 3rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(27, 75, 90, 0.2);
         }
 
-        .final-cta p {
+        .cta-box h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            color: white;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .cta-box p {
             font-size: 1.2rem;
-            color: var(--text-light);
+            color: rgba(255, 255, 255, 0.9);
             margin-bottom: 2.5rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        .cta-box .cta-button {
+            background: white;
+            color: var(--primary);
+        }
+
+        .cta-box .cta-button:hover {
+            background: var(--accent);
+            color: white;
         }
 
         /* Footer */
         footer {
-            padding: 2rem;
-            text-align: center;
+            padding: 3rem 2rem;
             background: var(--primary);
             color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         @media (max-width: 768px) {
             .hero {
                 min-height: 90vh;
+                padding: 6rem 1.5rem 3rem;
             }
-            
-            .steps, .benefits-grid {
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .cta-button,
+            .cta-secondary {
+                width: 100%;
+                text-align: center;
+            }
+
+            .process-grid,
+            .services-grid,
+            .benefits-grid,
+            .testimonial-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .cta-box {
+                padding: 3rem 2rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <a href="#" class="logo">Accountability Avenue</a>
+            <a href="#contact" class="nav-cta">Get Started</a>
+        </div>
+    </nav>
+
     <!-- Hero Section -->
     <section class="hero">
+        <div class="geometric-bg"></div>
         <div class="hero-content">
             <h1>
-                Stop Wondering Where<br>
-                <span>Your Money Goes.</span>
+                Your Path to<br>
+                <span class="highlight">Financial Freedom</span>
             </h1>
-            <p>
-                Get personalized accountability coaching to transform your spending habits, 
-                build real savings, and finally take control of your financial future.
+            <p class="subtitle">
+                Professional accountability coaching that transforms spending habits into lasting savings. 
+                Our certified coaches provide weekly guidance to help you build the financial future you deserve.
             </p>
-            <a href="#contact" class="cta-button">Start Your Journey</a>
+            <div class="cta-group">
+                <a href="#contact" class="cta-button">Book Free Consultation</a>
+                <a href="#how-it-works" class="cta-secondary">Learn More</a>
+            </div>
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="stats-grid">
-            <div class="stat">
-                <span class="stat-number">$12K</span>
-                <span class="stat-label">Average First-Year Savings</span>
+    <!-- Trust Bar -->
+    <section class="trust-bar">
+        <div class="trust-content">
+            <div class="trust-stat">
+                <span class="trust-number">500+</span>
+                <span class="trust-label">Clients Served</span>
             </div>
-            <div class="stat">
-                <span class="stat-number">89%</span>
-                <span class="stat-label">Client Success Rate</span>
+            <div class="trust-stat">
+                <span class="trust-number">$12K</span>
+                <span class="trust-label">Average Annual Savings</span>
             </div>
-            <div class="stat">
-                <span class="stat-number">Weekly</span>
-                <span class="stat-label">Personal Check-Ins</span>
+            <div class="trust-stat">
+                <span class="trust-number">89%</span>
+                <span class="trust-label">Success Rate</span>
+            </div>
+            <div class="trust-stat">
+                <span class="trust-number">4.9★</span>
+                <span class="trust-label">Client Rating</span>
             </div>
         </div>
     </section>
 
     <!-- How It Works -->
-    <section class="how-it-works">
-        <h2 class="section-title">How It Works</h2>
-        <div class="steps">
-            <div class="step">
-                <div class="step-number">1</div>
-                <h3>Initial Assessment</h3>
-                <p>We'll review your current financial situation together and identify your goals and spending patterns.</p>
+    <section class="how-it-works" id="how-it-works">
+        <div class="section-header">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">A proven process that delivers results in just four steps</p>
+        </div>
+        <div class="process-grid">
+            <div class="process-card">
+                <div class="process-number">1</div>
+                <h3>Financial Assessment</h3>
+                <p>Meet with one of our certified coaches for a comprehensive review of your financial situation, goals, and spending patterns.</p>
             </div>
-            <div class="step">
-                <div class="step-number">2</div>
-                <h3>Weekly Reviews</h3>
-                <p>Every week, we analyze your spending through secure screen shares or budgeting app access—keeping you accountable.</p>
+            <div class="process-card">
+                <div class="process-number">2</div>
+                <h3>Custom Strategy</h3>
+                <p>We create a personalized accountability plan tailored to your income, expenses, and savings targets.</p>
             </div>
-            <div class="step">
-                <div class="step-number">3</div>
-                <h3>Savings Strategy</h3>
-                <p>I'll help you open a high-yield savings account and guide you in setting up automatic transfers you control.</p>
+            <div class="process-card">
+                <div class="process-number">3</div>
+                <h3>Weekly Check-Ins</h3>
+                <p>Regular accountability sessions via secure screen sharing or budgeting app integration keep you on track.</p>
             </div>
-            <div class="step">
-                <div class="step-number">4</div>
-                <h3>Build Momentum</h3>
-                <p>Watch your savings grow as you develop better money habits and financial confidence.</p>
+            <div class="process-card">
+                <div class="process-number">4</div>
+                <h3>Build Wealth</h3>
+                <p>Watch your savings grow as our team guides you toward better money habits and financial confidence.</p>
             </div>
         </div>
     </section>
 
-    <!-- Benefits -->
-    <section class="benefits">
-        <h2 class="section-title">Why Accountability Coaching Works</h2>
-        <div class="benefits-grid">
-            <div class="benefit">
-                <div class="benefit-icon">🎯</div>
-                <h3>Personalized Support</h3>
-                <p>One-on-one coaching tailored to your unique financial situation and goals.</p>
+    <!-- Services -->
+    <section class="services">
+        <div class="section-header">
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-subtitle">Comprehensive coaching programs designed for your success</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">💼</div>
+                <h3>Weekly Accountability</h3>
+                <p>One-on-one coaching sessions to review spending, identify opportunities, and stay committed to your goals.</p>
+                <ul class="service-features">
+                    <li>30-minute weekly sessions</li>
+                    <li>Secure spending reviews</li>
+                    <li>Goal tracking & adjustments</li>
+                    <li>Text support between sessions</li>
+                </ul>
             </div>
-            <div class="benefit">
-                <div class="benefit-icon">📊</div>
-                <h3>Real-Time Insights</h3>
-                <p>Weekly spending reviews help you spot patterns and make smarter decisions immediately.</p>
+            <div class="service-card">
+                <div class="service-icon">💰</div>
+                <h3>Savings Optimization</h3>
+                <p>Strategic guidance on opening high-yield accounts and automating your path to financial security.</p>
+                <ul class="service-features">
+                    <li>Credit union account setup</li>
+                    <li>Automated transfer strategies</li>
+                    <li>Interest rate optimization</li>
+                    <li>Emergency fund building</li>
+                </ul>
             </div>
-            <div class="benefit">
-                <div class="benefit-icon">💪</div>
-                <h3>Stay Motivated</h3>
-                <p>Having someone in your corner keeps you committed when willpower fades.</p>
-            </div>
-            <div class="benefit">
-                <div class="benefit-icon">🔒</div>
-                <h3>Secure & Transparent</h3>
-                <p>You maintain full control of your accounts while getting expert guidance.</p>
-            </div>
-            <div class="benefit">
-                <div class="benefit-icon">📈</div>
-                <h3>Proven Results</h3>
-                <p>Clients who stick with weekly check-ins save an average of $1,000+ monthly.</p>
-            </div>
-            <div class="benefit">
-                <div class="benefit-icon">🎓</div>
+            <div class="service-card">
+                <div class="service-icon">📊</div>
                 <h3>Financial Education</h3>
-                <p>Learn sustainable money habits that last long after coaching ends.</p>
+                <p>Learn sustainable money management skills that create lasting change beyond our coaching relationship.</p>
+                <ul class="service-features">
+                    <li>Budgeting best practices</li>
+                    <li>Spending pattern analysis</li>
+                    <li>Financial goal setting</li>
+                    <li>Resource library access</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose">
+        <div class="section-header">
+            <h2 class="section-title">Why Accountability Avenue</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Professional coaching that delivers measurable results</p>
+        </div>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <span class="benefit-icon">🎯</span>
+                <h3>Certified Coaches</h3>
+                <p>Our team consists of trained financial accountability specialists with proven track records in behavior change.</p>
+            </div>
+            <div class="benefit-card">
+                <span class="benefit-icon">📱</span>
+                <h3>Flexible Platform</h3>
+                <p>Connect via video call, phone, or messaging—whatever works best for your schedule and lifestyle.</p>
+            </div>
+            <div class="benefit-card">
+                <span class="benefit-icon">🔒</span>
+                <h3>Your Control</h3>
+                <p>You maintain complete control of all accounts. We provide guidance, not access.</p>
+            </div>
+            <div class="benefit-card">
+                <span class="benefit-icon">📈</span>
+                <h3>Proven Results</h3>
+                <p>Our clients save an average of $1,000+ monthly within the first 3 months of coaching.</p>
+            </div>
+            <div class="benefit-card">
+                <span class="benefit-icon">💪</span>
+                <h3>Lasting Change</h3>
+                <p>We don't just help you save—we teach you the skills to maintain financial discipline for life.</p>
+            </div>
+            <div class="benefit-card">
+                <span class="benefit-icon">🤝</span>
+                <h3>Judgment-Free</h3>
+                <p>Our coaches create a supportive, non-judgmental environment where honesty leads to progress.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="section-header">
+            <h2 class="section-title">Client Success Stories</h2>
+            <p class="section-subtitle">Real results from real people</p>
+        </div>
+        <div class="testimonial-grid">
+            <div class="testimonial">
+                <div class="quote-mark">"</div>
+                <p class="testimonial-text">
+                    "In just 6 months, I saved over $7,000. My coach helped me see where money was slipping away 
+                    and gave me the accountability I needed to actually stick to a plan."
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">MJ</div>
+                    <div class="author-info">
+                        <div class="author-name">Maria J.</div>
+                        <div class="author-title">Teacher, Denver</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial">
+                <div class="quote-mark">"</div>
+                <p class="testimonial-text">
+                    "I tried budgeting apps before but never stuck with them. Having a real person check in weekly 
+                    made all the difference. Best investment I've made in myself."
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">DK</div>
+                    <div class="author-info">
+                        <div class="author-name">David K.</div>
+                        <div class="author-title">Software Developer, Austin</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial">
+                <div class="quote-mark">"</div>
+                <p class="testimonial-text">
+                    "The team at Accountability Avenue understood my goals without judgment. They helped me build 
+                    an emergency fund and pay off debt faster than I thought possible."
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">SL</div>
+                    <div class="author-info">
+                        <div class="author-name">Sarah L.</div>
+                        <div class="author-title">Nurse, Seattle</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Final CTA -->
     <section class="final-cta" id="contact">
-        <h2>Ready to Transform Your Finances?</h2>
-        <p>Let's work together to build the savings and financial freedom you deserve. Book your free consultation today.</p>
-        <a href="mailto:your@email.com" class="cta-button">Book Free Consultation</a>
+        <div class="cta-box">
+            <h2>Ready to Transform Your Finances?</h2>
+            <p>Join hundreds of clients who've taken control of their money with professional accountability coaching.</p>
+            <a href="mailto:hello@accountabilityavenue.online" class="cta-button">Book Your Free Consultation</a>
+        </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Financial Accountability Coaching. All rights reserved.</p>
-    </footer>
-</body>
-</html>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Accountability Avenue</h3>
+                <p>Professional financial accountability coaching for sustainable savings and lasting change.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#services">Our Programs</a>
+                <a href="#contact">Get Started</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <a href="mailto:hello@accountabilityavenue.online">hello@accountabilityavenue.online</a>
+                <p>Available Mon-Fri, 9am-6pm EST</p>
+            </div>
+        </div>
+        <div class="footer
